@@ -1,0 +1,189 @@
+<div class="container">
+  <div class="row d-flex justify-content-around">
+    <h2 class="my-4">Saque aqui su turno</h2>
+    <div class="col-md-5">
+      <form [formGroup]="turnosForm" (ngSubmit)="addTurno()">
+        <div class="row d-flex justify-content-around">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label>Obra social</label>
+              <select class="form-control" formControlName="ob" required>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+
+              <div
+                *ngIf="
+                  turnosForm.get('ob')?.hasError('required') &&
+                  turnosForm.get('ob')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label>Profesional</label>
+              <select class="form-control" formControlName="prof" required>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+
+              <div
+                *ngIf="
+                  turnosForm.get('prof')?.hasError('required') &&
+                  turnosForm.get('prof')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Ingrese DNI</label>
+              <input
+                formControlName="dni"
+                class="form-control"
+                type="text"
+                required
+              />
+
+              <div
+                *ngIf="
+                  turnosForm.get('dni')?.hasError('required') &&
+                  turnosForm.get('dni')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="row">
+              <label>Seleccione una fecha</label>
+              <mat-form-field class="col-md-7">
+                <input
+                  formControlName="fecha"
+                  matInput
+                  [matDatepicker]="picker"
+                />
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <div class="col-md-5">
+                <button mat-raised-button (click)="picker.open()">Fecha</button>
+              </div>
+            </div>
+
+            <div
+              *ngIf="
+                turnosForm.get('fecha')?.hasError('required') &&
+                turnosForm.get('fecha')?.touched
+              "
+              class="alert alert-danger"
+            >
+              El campo es obligatorio
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label>Ingrese telefono</label>
+              <input
+                formControlName="cel"
+                type="text"
+                class="form-control"
+                required
+              />
+
+              <div
+                *ngIf="
+                  turnosForm.get('cel')?.hasError('required') &&
+                  turnosForm.get('cel')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Ingrese nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nombre"
+                required
+              />
+              <div
+                *ngIf="
+                  turnosForm.get('nombre')?.hasError('required') &&
+                  turnosForm.get('nombre')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <div class="mb-3">
+              <label>Ingrese apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="apellido"
+                required
+              />
+
+              <div
+                *ngIf="
+                  turnosForm.get('apellido')?.hasError('required') &&
+                  turnosForm.get('apellido')?.touched
+                "
+                class="alert alert-danger"
+              >
+                El campo es obligatorio
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-dark"
+              [disabled]="turnosForm.invalid"
+            >
+              Enviar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- <div class="col-md-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">ob</th>
+            <th scope="col">prof</th>
+            <th scope="col">dni</th>
+            <th scope="col">cel</th>
+            <th scope="col">nombre</th>
+            <th scope="col">apellido</th>
+            <th scope="col">acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let turno of turnos">
+            <th scope="row">{{ turno.id }}</th>
+            <td>{{ turno.ob }}</td>
+            <td>{{ turno.prof }}</td>
+            <td>{{ turno.dni }}</td>
+            <td>{{ turno.cel }}</td>
+            <td>{{ turno.nombre }}</td>
+            <td>{{ turno.apellido }}</td>
+            <td>
+              <button class="btn bg-danger">editar</button
+              ><button class="btn bg-primary">eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-3">
+      <h1 class="my-5 text-center text-dark">Login</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="mb-3">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="usuario"
+            required
+            placeholder="Usuario"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              loginForm.get('usuario')?.hasError('required') &&
+              loginForm.get('usuario')?.touched
+            "
+          >
+            El campo es obligatorio
+          </div>
+        </div>
+        <div class="mb-3">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="contra"
+            required
+            placeholder="Contraseña"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              loginForm.get('contra')?.hasError('required') &&
+              loginForm.get('contra')?.touched
+            "
+          >
+            El campo es obligatorio
+          </div>
+        </div>
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="btn btn-dark"
+          routerLink="/admin"
+        >
+          Ingresar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
