@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-around">
-    <h2 class="my-4">Saque aqui su turno</h2>
+    <h2 class="my-4 text-white">Saque aqui su turno</h2>
     <div class="col-md-5">
       <form [formGroup]="turnosForm" (ngSubmit)="addTurno()">
         <div class="row d-flex justify-content-around">
@@ -154,36 +154,5 @@
         </div>
       </form>
     </div>
-    <!-- <div class="col-md-6">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">ob</th>
-            <th scope="col">prof</th>
-            <th scope="col">dni</th>
-            <th scope="col">cel</th>
-            <th scope="col">nombre</th>
-            <th scope="col">apellido</th>
-            <th scope="col">acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let turno of turnos">
-            <th scope="row">{{ turno.id }}</th>
-            <td>{{ turno.ob }}</td>
-            <td>{{ turno.prof }}</td>
-            <td>{{ turno.dni }}</td>
-            <td>{{ turno.cel }}</td>
-            <td>{{ turno.nombre }}</td>
-            <td>{{ turno.apellido }}</td>
-            <td>
-              <button class="btn bg-danger">editar</button
-              ><button class="btn bg-primary">eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
   </div>
 </div>
