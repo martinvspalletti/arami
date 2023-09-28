@@ -15,7 +15,6 @@ export interface Gastos {
   styleUrls: ["./gastos.component.css"],
 })
 export class GastosComponent {
-  mostrardato: boolean = false;
   datos: any;
   gastosForm: FormGroup;
   constructor(private http: HttpClient, private fb: FormBuilder) {

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export interface Turnos {
   id: number;
@@ -16,9 +16,10 @@ export interface Turnos {
   styleUrls: ["./turnos.component.css"],
 })
 export class TurnosComponent {
+  private fb = inject(FormBuilder);
   turnosForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
     this.turnosForm = this.fb.group({
       ob: ["", Validators.required],
       prof: ["", Validators.required],

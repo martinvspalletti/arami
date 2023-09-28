@@ -18,7 +18,7 @@
         >
           <h3 class="mb-2">Paciente</h3>
           <div class="col-md-4 mb-3">
-            <select class="form-select" formControlName="ob" required>
+            <select class="form-select" formControlName="apellido" required>
               <!--debe ir un ngfor y un ngif-->
               <option value="1">uno</option>
               <option value="2">dos</option>
@@ -26,8 +26,8 @@
             </select>
             <div
               *ngIf="
-                ejerciciosPacientesForm.get('ob')?.hasError('required') &&
-                ejerciciosPacientesForm.get('ob')?.touched
+                ejerciciosPacientesForm.get('apellido')?.hasError('required') &&
+                ejerciciosPacientesForm.get('apellido')?.touched
               "
               class="alert alert-danger"
             >
@@ -38,7 +38,11 @@
             <div class="col-md-5">
               <label class="mb-2">Ejercicio</label>
               <div>
-                <select class="form-select" formControlName="ob" required>
+                <select
+                  class="form-select"
+                  formControlName="ejercicio"
+                  required
+                >
                   <!--debe ir un ngfor y un ngif-->
                   <option value="1">uno</option>
                   <option value="2">dos</option>
@@ -46,8 +50,10 @@
                 </select>
                 <div
                   *ngIf="
-                    ejerciciosPacientesForm.get('ob')?.hasError('required') &&
-                    ejerciciosPacientesForm.get('ob')?.touched
+                    ejerciciosPacientesForm
+                      .get('ejercicio')
+                      ?.hasError('required') &&
+                    ejerciciosPacientesForm.get('ejercicio')?.touched
                   "
                   class="alert alert-danger"
                 >
@@ -59,15 +65,17 @@
             <div class="col-md-2">
               <label class="mb-2">Cantidad</label>
               <div>
-                <select class="form-select" formControlName="ob" required>
+                <select class="form-select" formControlName="cantidad" required>
                   <option value="{{ n }}" *ngFor="let n of [1, 2, 3, 4]">
                     {{ n }}
                   </option>
                 </select>
                 <div
                   *ngIf="
-                    ejerciciosPacientesForm.get('ob')?.hasError('required') &&
-                    ejerciciosPacientesForm.get('ob')?.touched
+                    ejerciciosPacientesForm
+                      .get('cantidad')
+                      ?.hasError('required') &&
+                    ejerciciosPacientesForm.get('cantidad')?.touched
                   "
                   class="alert alert-danger"
                 >
@@ -78,11 +86,26 @@
             <div class="col-md-2">
               <label class="mb-2">Repeticion</label>
               <div>
-                <select class="form-select" formControlName="ob" required>
+                <select
+                  class="form-select"
+                  formControlName="repeticion"
+                  required
+                >
                   <option value="{{ n }}" *ngFor="let n of [1, 2, 3, 4]">
                     {{ n }}
                   </option>
                 </select>
+                <div
+                  *ngIf="
+                    ejerciciosPacientesForm
+                      .get('repeticion')
+                      ?.hasError('required') &&
+                    ejerciciosPacientesForm.get('repeticion')?.touched
+                  "
+                  class="alert alert-danger"
+                >
+                  El campo es obligatorio
+                </div>
               </div>
             </div>
           </div>
@@ -94,9 +117,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">id</th>
               <th scope="col">apellido</th>
-              <th scope="col">dni</th>
               <th scope="col">ejercicio</th>
               <th scope="col">cantidad</th>
               <th scope="col">repeticion</th>
@@ -105,9 +126,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let pacienteEjercicio of pacienteEjercicios">
-              <th scope="row">{{ pacienteEjercicio.id }}</th>
-              <td>{{ pacienteEjercicio.apellido }}</td>
-              <td>{{ pacienteEjercicio.dni }}</td>
+              <td scope="row">{{ pacienteEjercicio.apellido }}</td>
               <td>{{ pacienteEjercicio.ejercicio }}</td>
               <td>{{ pacienteEjercicio.cantidad }}</td>
               <td>{{ pacienteEjercicio.repeticion }}</td>
