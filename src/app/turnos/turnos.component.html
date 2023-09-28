@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-around">
     <h2 class="my-4 text-white">Saque aqui su turno</h2>
-    <div class="col-md-5">
+    <div class="col-md-5 border border-dark px-5 py-4">
       <form [formGroup]="turnosForm" (ngSubmit)="addTurno()">
         <div class="row d-flex justify-content-around">
           <div class="col-md-6">
@@ -143,15 +143,15 @@
                 El campo es obligatorio
               </div>
             </div>
-            <button
-              type="submit"
-              class="btn btn-dark"
-              [disabled]="turnosForm.invalid"
-            >
-              Enviar
-            </button>
           </div>
         </div>
+        <button
+          type="submit"
+          class="btn btn-dark"
+          [disabled]="turnosForm.invalid"
+        >
+          Enviar
+        </button>
       </form>
     </div>
   </div>
