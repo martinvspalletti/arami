@@ -9,7 +9,7 @@ import { Gastos } from "./gastos";
   styleUrls: ["./gastos.component.css"],
 })
 export class GastosComponent {
-  datos: any;
+  datos!: any;
   gastosForm: FormGroup;
   private fb = inject(FormBuilder);
   private gs = inject(GastosService);

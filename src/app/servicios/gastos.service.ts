@@ -6,8 +6,7 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class GastosService {
-  private http = Inject(HttpClient);
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ob(): Observable<any> {
     return this.http.get("https://jsonplaceholder.typicode.com/users");
