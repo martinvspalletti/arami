@@ -1,13 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-
-export interface Gastos {
-  id: number;
-  detalle: string;
-  monto: number;
-}
+import { GastosService } from "../servicios/gastos.service";
+import { Gastos } from "./gastos";
 
 @Component({
   selector: "app-gastos",
@@ -17,7 +11,9 @@ export interface Gastos {
 export class GastosComponent {
   datos: any;
   gastosForm: FormGroup;
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  private fb = inject(FormBuilder);
+  private gs = inject(GastosService);
+  constructor() {
     this.gastosForm = this.fb.group({
       detalle: ["", Validators.required],
       monto: ["", Validators.required],
@@ -35,23 +31,10 @@ export class GastosComponent {
       detalle: "",
       monto: 0,
     },
-    {
-      id: 0,
-      detalle: "",
-      monto: 0,
-    },
-    {
-      id: 0,
-      detalle: "",
-      monto: 0,
-    },
   ];
 
-  ob(): Observable<any> {
-    return this.http.get("https://jsonplaceholder.typicode.com/users");
-  }
   odatos() {
-    this.ob().subscribe((data) => (this.datos = data));
+    this.gs.ob().subscribe((data) => (this.datos = data));
   }
   agregarGasto() {}
 }

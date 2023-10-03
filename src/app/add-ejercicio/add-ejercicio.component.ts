@@ -19,7 +19,7 @@ export class AddEjercicioComponent {
   }
 
   ejer: Ejercicios = new Ejercicios();
-  //revisar - editar campos uno a uno ????
+  //revisar - que hago con el id ???
   addEjercicio() {
     (this.ejer.id_ = this.aes.ejercicios.length + 1),
       (this.ejer.nombre_ = this.crearEjercicio.get("nombreEjercicio")?.value);
