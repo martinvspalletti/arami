@@ -7,14 +7,6 @@ import { Comentarios } from "../comentarios/comentarios";
   styleUrls: ["./listacomentarios.component.css"],
 })
 export class ListacomentariosComponent {
-  comentarios: Comentarios[] = [
-    {
-      nombre: "",
-      detalle: "",
-    },
-    {
-      nombre: "",
-      detalle: "",
-    },
-  ];
+  comentarios: Comentarios[] = []
+ 
 }

@@ -24,14 +24,15 @@ export class AddEjercicioComponent {
     this.ejer = this.crearEjercicio.value;
     this.aes.ejercicios.push(this.ejer);
     this.ejer = new Ejercicios();
+    //return [...this.ejercicios];
   }
 
-  //revisar - toma el elemento seleccionado pero no lo devuelve en el campo
+  
   editar(ejercicio: Ejercicios) {
     this.ejer = ejercicio;
     console.log((this.ejer = ejercicio));
-
     this.ejer = new Ejercicios();
+    
   }
 
   //revisar - borra todos los elementos

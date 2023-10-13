@@ -32,7 +32,7 @@ export class GastosComponent {
   ];
 
   odatos() {
-    this.gs.ob().subscribe((data) => (this.datos = data));
+    this.gs.getAll().subscribe((data) => (this.datos = data));
   }
   agregarGasto() {}
 }

@@ -34,18 +34,6 @@ export class EjerciciosComponent {
       cantidad: 10,
       repeticion: 3,
     },
-    {
-      apellido: "pepito",
-      ejercicio: "sentadillas",
-      cantidad: 10,
-      repeticion: 3,
-    },
-    {
-      apellido: "pepito",
-      ejercicio: "sentadillas",
-      cantidad: 10,
-      repeticion: 3,
-    },
   ];
 
   agregarEjercicioPaciente() {}

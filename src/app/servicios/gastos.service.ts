@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 export class GastosService {
   constructor(private http: HttpClient) {}
 
-  ob(): Observable<any> {
+  getAll(): Observable<any> {
     return this.http.get("https://jsonplaceholder.typicode.com/users");
   }
 }
