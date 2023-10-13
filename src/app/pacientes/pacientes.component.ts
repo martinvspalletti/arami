@@ -26,7 +26,6 @@ export class PacientesComponent {
 
   agregarPaciente() {
     const pacientes = new Pacientes(
-      this.ps.pac.length + 1,
       this.pacienteForm.get("ob")?.value,
       this.pacienteForm.get("prof")?.value,
       this.pacienteForm.get("dni")?.value,

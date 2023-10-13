@@ -22,12 +22,10 @@ export class GastosComponent {
 
   gastos: Gastos[] = [
     {
-      id: 0,
       detalle: "",
       monto: 0,
     },
     {
-      id: 0,
       detalle: "",
       monto: 0,
     },

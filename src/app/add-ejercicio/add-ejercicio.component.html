@@ -6,15 +6,15 @@
         <input
           type="text"
           class="form-control mb-3"
-          formControlName="nombreEjercicio"
+          formControlName="nombre"
           required
           placeholder="Ingrese ejercicio"
         />
         <div
           class="alert alert-danger"
           *ngIf="
-            crearEjercicio.get('nombreEjercicio')?.hasError('required') &&
-            crearEjercicio.get('nombreEjercicio')?.touched
+            crearEjercicio.get('nombre')?.hasError('required') &&
+            crearEjercicio.get('nombre')?.touched
           "
         >
           El campo es obligatorio
@@ -34,15 +34,13 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">id</th>
             <th scope="col">ob</th>
             <th scope="col">acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let ejercicio of ejercicios">
-            <th scope="row">{{ ejercicio._id }}</th>
-            <td>{{ ejercicio._nombre }}</td>
+            <th scope="row">{{ ejercicio.nombre }}</th>
             <td>
               <button class="btn bg-danger" (click)="editar(ejercicio)">
                 editar</button

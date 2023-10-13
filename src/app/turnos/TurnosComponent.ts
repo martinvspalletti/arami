@@ -1,15 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-export interface Turnos {
-  id: number;
-  ob: string;
-  prof: string;
-  dni: number;
-  cel: number;
-  fecha: number;
-  nombre: string;
-  apellido: string;
-}
+import { Turnos } from "./turnos";
+
 @Component({
   selector: "app-turnos",
   templateUrl: "./turnos.component.html",
@@ -32,7 +24,6 @@ export class TurnosComponent {
   }
   turnos: Turnos[] = [
     {
-      id: 0,
       ob: "",
       prof: "",
       dni: 0,
@@ -42,27 +33,6 @@ export class TurnosComponent {
       apellido: "",
     },
     {
-      id: 0,
-      ob: "",
-      prof: "",
-      dni: 0,
-      cel: 0,
-      fecha: 0,
-      nombre: "",
-      apellido: "",
-    },
-    {
-      id: 0,
-      ob: "",
-      prof: "",
-      dni: 0,
-      cel: 0,
-      fecha: 0,
-      nombre: "",
-      apellido: "",
-    },
-    {
-      id: 0,
       ob: "",
       prof: "",
       dni: 0,

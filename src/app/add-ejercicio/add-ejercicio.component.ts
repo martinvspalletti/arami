@@ -14,15 +14,14 @@ export class AddEjercicioComponent {
   private aes = inject(AddejercicioService);
   constructor() {
     this.crearEjercicio = this.fb.group({
-      nombreEjercicio: ["", Validators.required],
+      nombre: ["", Validators.required],
     });
   }
 
   ejer: Ejercicios = new Ejercicios();
   //revisar - que hago con el id ???
   addEjercicio() {
-    (this.ejer.id_ = this.aes.ejercicios.length + 1),
-      (this.ejer.nombre_ = this.crearEjercicio.get("nombreEjercicio")?.value);
+    this.ejer = this.crearEjercicio.value;
     this.aes.ejercicios.push(this.ejer);
     this.ejer = new Ejercicios();
   }
@@ -31,17 +30,19 @@ export class AddEjercicioComponent {
   editar(ejercicio: Ejercicios) {
     this.ejer = ejercicio;
     console.log((this.ejer = ejercicio));
+
     this.ejer = new Ejercicios();
   }
 
   //revisar - borra todos los elementos
   del() {
-    this.aes.ejercicios = this.aes.ejercicios.filter(
+    /* this.aes.ejercicios = this.aes.ejercicios.filter(
       (x) => x.id_ != this.ejer.id_
     );
 
-    this.ejer = new Ejercicios();
+    this.ejer = new Ejercicios();*/
   }
+
   get ejercicios() {
     return this.aes.ejercicios;
   }

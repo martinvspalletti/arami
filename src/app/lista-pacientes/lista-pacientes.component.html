@@ -15,7 +15,6 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">id</th>
               <th scope="col">nombre</th>
               <th scope="col">apellido</th>
               <th scope="col">dni</th>
@@ -25,8 +24,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let listapaciente of listaPacientes">
-              <th scope="row">{{ listapaciente.id }}</th>
-              <td>{{ listapaciente.nombre }}</td>
+              <th scope="row">{{ listapaciente.nombre }}</th>
               <td>{{ listapaciente.apellido }}</td>
               <td>{{ listapaciente.dni }}</td>
               <td>{{ listapaciente.telefono }}</td>

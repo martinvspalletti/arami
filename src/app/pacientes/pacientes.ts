@@ -1,6 +1,5 @@
 export class Pacientes {
   constructor(
-    private id: number,
     private ob: string,
     private prof: string,
     private dni: number,

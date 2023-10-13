@@ -9,12 +9,10 @@ import { Comentarios } from "../comentarios/comentarios";
 export class ListacomentariosComponent {
   comentarios: Comentarios[] = [
     {
-      id: 0,
       nombre: "",
       detalle: "",
     },
     {
-      id: 0,
       nombre: "",
       detalle: "",
     },
