@@ -1,11 +1,5 @@
 <div class="container">
   <div class="row my-3">
-    <div class="col-md-4 mb-3">
-      <label (click)="odatos()">ver datos</label>
-      <div *ngFor="let dato of datos">
-        {{ dato.name }}
-      </div>
-    </div>
     <h2>Gastos</h2>
     <form [formGroup]="gastosForm" (ngSubmit)="agregarGasto()">
       <div class="col-md-4 mb-3">
@@ -62,16 +56,15 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">id</th>
               <th scope="col">Detalle</th>
               <th scope="col">Monto</th>
               <th scope="col">acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let gasto of gastos">
-              <th scope="row">{{ gasto.detalle }}</th>
-              <td>{{ gasto.monto }}</td>
+            <tr *ngFor="let dato of datos">
+              <th scope="row">{{ dato.detalle }}</th>
+              <td>{{ dato.importe }}</td>
               <td>
                 <button class="btn bg-danger">editar</button
                 ><button class="btn bg-primary">eliminar</button>
