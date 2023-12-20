@@ -4,7 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 //material
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -31,6 +31,8 @@ import { TurnosComponent } from "./turnos/TurnosComponent";
 import { ComentariosComponent } from "./comentarios/comentarios.component";
 import { ListacomentariosComponent } from "./listacomentarios/listacomentarios.component";
 import { NavComponent } from "./nav/nav.component";
+import { ErrorInterceptor } from "./interceptor/error.interceptor";
+import { JwtInterceptor } from "./interceptor/jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -65,7 +67,10 @@ import { NavComponent } from "./nav/nav.component";
     MatDatepickerModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

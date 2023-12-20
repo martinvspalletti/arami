@@ -1,8 +1,10 @@
 export class Gastos {
-  constructor(init?: Partial<Gastos>) {
+  /*constructor(init?: Partial<Gastos>) {
     Object.assign(this, init);
-  }
-  id: number = 0;
-  detalle?: string;
-  importe?: number;
+  }*/
+  constructor(
+    public id: number,
+    public detalle: string,
+    public importe: number
+  ) {}
 }

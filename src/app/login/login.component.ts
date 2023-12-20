@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginService } from "../servicios/login.service";
+import { Router } from "@angular/router";
+import { Login } from "../login/login";
 
 @Component({
   selector: "app-login",
@@ -10,7 +12,11 @@ import { LoginService } from "../servicios/login.service";
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private lg: LoginService) {}
+  constructor(
+    private fb: FormBuilder,
+    private lg: LoginService,
+    private router: Router
+  ) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
       nombre: ["", Validators.required],
@@ -24,6 +30,9 @@ export class LoginComponent implements OnInit {
         this.loginForm.controls["nombre"].value,
         this.loginForm.controls["password"].value
       )
-      .subscribe();
+      .subscribe((login: Login) => {
+        sessionStorage.setItem("token", login.token);
+        this.router.navigate(["/admin"]);
+      });
   }
 }

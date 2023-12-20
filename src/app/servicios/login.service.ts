@@ -11,8 +11,16 @@ const url = "http://localhost:4444/auth";
 export class LoginService {
   constructor(private http: HttpClient) {}
 
-  login(nombre: string, password: string): Observable<string> {
-    const user = new Login(nombre, password);
-    return this.http.post<string>(url, user);
+  login(nombre: string, password: string): Observable<Login> {
+    const user = new Login(nombre, password, "");
+    return this.http.post<Login>(url, user);
+  }
+
+  logout(): void {
+    sessionStorage.removeItem("token");
+  }
+
+  getToken(): string | null {
+    return sessionStorage.getItem("token");
   }
 }

@@ -11,6 +11,7 @@ import { ListaPacientesComponent } from "./lista-pacientes/lista-pacientes.compo
 import { TurnosComponent } from "./turnos/TurnosComponent";
 import { EjerciciosComponent } from "./ejercicios/ejercicios.component";
 import { ListacomentariosComponent } from "./listacomentarios/listacomentarios.component";
+import { administrarGuard } from "./guard/administrar.guard";
 
 const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -23,6 +24,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: "gastos", component: GastosComponent },
+      { path: "gastos/:id", component: GastosComponent },
       { path: "addejercicio", component: AddEjercicioComponent },
       { path: "listapacientes", component: ListaPacientesComponent },
       { path: "turnospacientes", component: TurnosComponent },
@@ -30,6 +32,7 @@ const routes: Routes = [
       { path: "addPacientes", component: PacientesComponent },
       { path: "listaComentarios", component: ListacomentariosComponent },
     ],
+    canActivate: [administrarGuard],
   },
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];

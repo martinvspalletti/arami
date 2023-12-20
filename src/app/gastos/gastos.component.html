@@ -1,14 +1,15 @@
 <div class="container">
   <div class="row my-3">
     <h2>Gastos</h2>
-    <form [formGroup]="gastosForm" (ngSubmit)="agregarGasto()">
+
+    <form [formGroup]="gastosForm">
       <div class="col-md-4 mb-3">
         <input
           class="form-control"
           formControlName="detalle"
           type="text"
           required
-          placeholder="Detalle "
+          placeholder="Detalle"
         />
 
         <div
@@ -26,31 +27,33 @@
         <input
           type="text"
           class="form-control"
-          formControlName="monto"
+          formControlName="importe"
           required
-          placeholder="Monto"
+          placeholder="Importe"
         />
 
         <div
           *ngIf="
-            gastosForm.get('monto')?.hasError('required') &&
-            gastosForm.get('monto')?.touched
+            gastosForm.get('importe')?.hasError('required') &&
+            gastosForm.get('importe')?.touched
           "
           class="alert alert-danger"
         >
           El campo es obligatorio
         </div>
       </div>
+      <div class="col-md-1 pt-2 px-0">
+        <button
+          (click)="agregarGasto()"
+          [disabled]="gastosForm.invalid"
+          class="btn btn-dark"
+        >
+          Enviar
+        </button>
+        <button (click)="actualizar()" class="btn bg-danger">actualizar</button>
+      </div>
     </form>
-    <div class="col-md-1 pt-2 px-0">
-      <button
-        type="submit"
-        [disabled]="gastosForm.invalid"
-        class="btn btn-dark"
-      >
-        Enviar
-      </button>
-    </div>
+
     <div class="row">
       <div class="col-md-8">
         <table class="table">
@@ -66,8 +69,12 @@
               <th scope="row">{{ dato.detalle }}</th>
               <td>{{ dato.importe }}</td>
               <td>
-                <button class="btn bg-danger">editar</button
-                ><button class="btn bg-primary">eliminar</button>
+                <button (click)="upGasto(dato.id)" class="btn bg-danger">
+                  editar
+                </button>
+                <button (click)="delGasto(dato.id)" class="btn bg-primary">
+                  eliminar
+                </button>
               </td>
             </tr>
           </tbody>

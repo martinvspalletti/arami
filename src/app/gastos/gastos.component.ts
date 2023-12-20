@@ -9,7 +9,8 @@ import { Gastos } from "./gastos";
   styleUrls: ["./gastos.component.css"],
 })
 export class GastosComponent implements OnInit {
-  datos!: any;
+  datos: Gastos[] = [];
+
   gastosForm: FormGroup;
   private fb = inject(FormBuilder);
   private gs = inject(GastosService);
@@ -20,16 +21,43 @@ export class GastosComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.gs.getAll().subscribe((data) => (this.datos = data));
+    this.gs.getAll().subscribe((datos) => (this.datos = datos));
   }
-
-  gastos: Gastos[] = [];
 
   agregarGasto() {
-    const gt = new Gastos(this.gastosForm.value);
     this.gs
-      .registrarGasto(gt)
-      .subscribe(() => console.log("guardado con exito"));
+      .registrarGasto(
+        0,
+        this.gastosForm.controls["detalle"].value,
+        this.gastosForm.controls["importe"].value
+      )
+      .subscribe();
   }
-  o() {}
+
+  actualizar() {
+    const _id = this.datos.find((datos) => {
+      return datos.id === datos.id;
+    });
+    this.gs
+      .updateGasto(
+        Number(_id?.id),
+        this.gastosForm.controls["detalle"].value,
+        this.gastosForm.controls["importe"].value
+      )
+      .subscribe();
+    console.log(_id?.id);
+  }
+  delGasto(id: number) {
+    this.gs.deleteGasto(id).subscribe();
+  }
+
+  upGasto(id: number) {
+    const gas = this.datos.find((datos) => {
+      return datos.id === id;
+    });
+    this.gastosForm.patchValue({
+      detalle: gas?.detalle,
+      importe: gas?.importe,
+    });
+  }
 }
